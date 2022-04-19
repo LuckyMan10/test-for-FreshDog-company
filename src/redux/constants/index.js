@@ -1,0 +1,7 @@
+const SET_LIST_ITEM = 'SET_LIST_ITEM';
+const REMOVE_LIST_ITEM = 'REMOVE_LIST_ITEM';
+
+export {
+    SET_LIST_ITEM,
+    REMOVE_LIST_ITEM
+}

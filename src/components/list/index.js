@@ -1,17 +1,20 @@
 import React from 'react';
-import { ListItem } from "./listItem";
+import { useDispatch } from 'react-redux';
+import { ListItem } from './listItem';
 
-const List = ({ data = [] }) => {
+const List = ({ data = [], removeListItem }) => {
+    const dispatch = useDispatch();
 
-    function onRemove() {
-        console.log('kiss me');
+    function onRemove(e) {
+        const { id } = e.target;
+        if (id) dispatch(removeListItem(id));
     }
 
     return (
-        <div className="list">
-            {data.map((item) => <ListItem onRemove={onRemove} name={item.name} key={item.id}/> )}
+        <div onClick={onRemove} className="list">
+            {data.map((item) => <ListItem data={item} key={item.id}/> )}
         </div>
     )
 }
 
-export default List;
+export { List }

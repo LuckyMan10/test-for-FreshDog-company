@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { useSelector } from 'react-redux';
+import { List } from './components';
+import { listSelector } from './redux/selectors';
+import { AddForm } from './components';
+import { setListItem } from './redux/actions';
+import { removeListItem } from './redux/actions';
 
 function App() {
+  const listData = useSelector(listSelector);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="App__title">
+        <h1>Fresh dog list</h1>
+      </div>
+        <AddForm data={listData} setListItem={setListItem}/>
+        <List data={listData} removeListItem={removeListItem}/>
     </div>
   );
 }
